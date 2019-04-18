@@ -19,7 +19,7 @@ reddit = praw.Reddit(client_id='d7X8ZlU7VSHIfw',
                     client_secret='7KDD5L-R-i4GEBaxV_9v2EwzA_k',
                     user_agent='<console:MobileScoutBot:0.0.1 (by /u/apgearhart1)>',
                     username='apgearhart1',
-                    password='Freckles0729!')
+                    password='password')
 print("Logged In!")
 
 
