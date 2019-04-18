@@ -9,7 +9,7 @@ f = open(filename, "w")
 
 
 
-for i in range(10):
+for i in range(15):
 	my_url = my_url + str(i)
 	uClient = uReq(my_url)
 	page_html = uClient.read()
