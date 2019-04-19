@@ -28,33 +28,38 @@ print("Logged In!")
 
 
 
-keywords = subs
+
 
 def run(reddit, comments_replied):
     print("Searching through comments...\n")
-    for comment in reddit.subreddit('all').stream.comments():
+    for comment in reddit.subreddit('all').stream.comments(): #change which subreddits to check
         sub = comment.body
         if 'R/' in sub:
             if comment.id not in comments_replied and comment.author != reddit.user.me():
                 r = comment.body.find('R')
                 s = comment.body.find('/')
-                if s - r == 1:
+                if s - r == 1: #check if R and / are next to each other
                     
                     locate_space = comment.body.find(' ', r)
-                    found = sub[s:locate_space]
-                    if found[3:] in subs:
-                        print("Mobile User Found!\n")
-                        bot_phrase = "/r/"+ found + " -- Some people don't know how to link subreddits these days."
-                        print("Capital R found while linking subs \n")
-                        comment.reply(bot_phrase)
-                        print("Replied to comment", comment.id)
-                        comments_replied.append(comment.id)
+                    found = sub[s+1:locate_space] #forms the subreddit string
+                    print(found)
+                    if found not in subs:
+                        subs.append(found)
+                        with open('subs.csv', 'a') as f:
+                            f.write(found + '\n')
+                    print("Mobile User Found!\n")
+                    bot_phrase = "/r/"+ found + " -- Some people don't know how to link subreddits these days."
+                    print("Capital R found while linking subs \n")
+                    comment.reply(bot_phrase)
+                    print("Replied to comment", comment.id)
+                    comments_replied.append(comment.id)       
+
 
                         
                       
-                        with open('replies.txt', 'a') as fr:
-                            fr.write(comment.id + '\n')
-    time.sleep(1)
+                    with open('replies.txt', 'a') as fr:
+                        fr.write(comment.id + '\n')
+    time.sleep(420) #7 minute intervals so it doesn't spam
 
 
 
