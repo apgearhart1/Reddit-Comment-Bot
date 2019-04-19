@@ -15,11 +15,11 @@ with open('subs.csv') as f:
         subs.append(row)
 
 # Create the Reddit instance and log in
-reddit = praw.Reddit(client_id='d7X8ZlU7VSHIfw',
-                    client_secret='7KDD5L-R-i4GEBaxV_9v2EwzA_k',
+reddit = praw.Reddit(client_id='B3dcYGjak4DUHw',
+                    client_secret='LiHxe8oEZc6dz3V_v0vmmdvOBTM',
                     user_agent='<console:MobileScoutBot:0.0.1 (by /u/apgearhart1)>',
-                    username='apgearhart1',
-                    password='password')
+                    username='Mobile_Scout_Bot',
+                    password='Thecatgoesquack')
 print("Logged In!")
 
 
